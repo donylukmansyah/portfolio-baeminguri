@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { RiCloseLine, RiGlobalLine } from "react-icons/ri";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { language, toggleLanguage } = useLanguage();
+  const navigate = useNavigate();
 
   const translations = {
     en: { menu: "Menu", home: "Home", gear: "Gear", lang: "English" },
@@ -14,8 +15,15 @@ const Navbar = () => {
 
   const t = translations[language];
 
+  const handleNavigate = (path) => {
+    setMenuOpen(false);
+    setTimeout(() => {
+      navigate(path);
+    }, 300); // delay untuk beri waktu transisi
+  };
+
   return (
-    <nav className="relative w-full flex justify-end  py-4">
+    <nav className="relative w-full flex justify-end py-4">
       <button
         onClick={() => setMenuOpen(true)}
         className="text-lg font-bold transition-colors duration-300 hover:text-blue-500"
@@ -33,6 +41,7 @@ const Navbar = () => {
 
       {/* Panel menu */}
       <div
+        style={{ zIndex: 2147483647 }}
         className={`fixed top-0 right-0 h-full bg-white z-50 flex flex-col p-8 shadow-lg transition-transform duration-500 ease-in-out transform ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         } w-full sm:max-w-[400px]`}
@@ -45,22 +54,21 @@ const Navbar = () => {
           <RiCloseLine />
         </button>
 
-        <h2 className="text-2xl font-bold mb-4">{t.menu}</h2>
+        <h2 className="text-3xl font-bold mb-4">{t.menu}</h2>
 
-        <Link
-          to="/"
-          onClick={() => setMenuOpen(false)}
-          className="mb-2 transition-colors duration-300 hover:text-blue-500"
+        <button
+          onClick={() => handleNavigate("/")}
+          className="mb-2 transition-colors duration-300 hover:text-blue-500 text-lg text-left"
         >
           {t.home}
-        </Link>
-        <Link
-          to="/gear"
-          onClick={() => setMenuOpen(false)}
-          className="mb-2 transition-colors duration-300 hover:text-blue-500"
+        </button>
+
+        <button
+          onClick={() => handleNavigate("/gear")}
+          className="mb-2 transition-colors duration-300 hover:text-blue-500 text-lg text-left"
         >
           {t.gear}
-        </Link>
+        </button>
 
         {/* Tombol ganti bahasa (tidak menutup menu) */}
         <div className="mt-auto flex justify-center">
@@ -68,7 +76,7 @@ const Navbar = () => {
             onClick={() => {
               toggleLanguage();
             }}
-            className="text-sm flex items-center transition-colors duration-300 hover:text-blue-500"
+            className="text-sm flex items-center transition-colors duration-300 hover:text-blue-500 font-semibold"
           >
             <RiGlobalLine className="mr-2" />
             {t.lang}

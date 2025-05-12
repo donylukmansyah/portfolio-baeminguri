@@ -5,7 +5,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear(); // Mendapatkan tahun saat ini
 
   return (
-    <footer className="text-gray-600 py-6 ">
+    <footer className="text-gray-400 py-6 ">
       <div className="max-w-4xl mx-auto px-4 text-center">
         <div className="flex justify-center space-x-10 mt-8">
           <a
@@ -31,7 +31,7 @@ const Footer = () => {
             <RiMailFill />
           </a>
         </div>
-        <p className="text-xs sm:text-sm md:text-base text-gray-500 mt-10">
+        <p className="text-xs sm:text-sm md:text-base text-gray-400 mt-10">
           © {currentYear} Dony Lukmansyah, All Rights Reserved
         </p>
       </div>

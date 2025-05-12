@@ -1,46 +1,219 @@
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import { useState } from 'react';
+import React, { useState } from "react";
+import { useLanguage } from "../context/LanguageContext";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import ScrollToTop from "../components/ScrollToTop";
+import bestCC from "../assets/img/best-cc.jpg";
+import favCC from "../assets/img/fav-cc.jpg";
 
-export default function Gear() {
-  const [category, setCategory] = useState('All');
+const Gear = () => {
+  const { language } = useLanguage();
 
-  const gear = [
-    { name: 'Sony A7III', type: 'Video' },
-    { name: 'Rode NT1', type: 'Audio' },
-    { name: 'Logitech MX Master 3', type: 'Computer' },
-    // Tambahkan item lainnya
+  const content = {
+    en: {
+      title: "Gear",
+      description:
+        "Everything I use to edit my videos, including presets, CC, and quality settings. Personal favorites are marked, with affiliate links if you want to grab them too.",
+      clearFilters: "✖ Clear all filters",
+      buyNow: "Buy now",
+      recommended: "Recommended",
+      filters: {
+        video: "Video",
+        sound: "Sound Effect",
+        recommended: "Recommended",
+        subfilters: {
+          CC: "CC",
+          Quality: "Quality",
+        },
+      },
+    },
+    id: {
+      title: "Peralatan",
+      description:
+        "Semua yang saya gunakan untuk mengedit video saya, termasuk preset, CC, dan pengaturan kualitas. Favorit pribadi ditandai, dengan tautan afiliasi jika Anda ingin mendapatkannya juga.",
+      clearFilters: "✖ Hapus semua filter",
+      buyNow: "Beli sekarang",
+      recommended: "Rekomendasi",
+      filters: {
+        video: "Video",
+        sound: "Efek Suara",
+        recommended: "Rekomendasi",
+        subfilters: {
+          CC: "CC",
+          Quality: "Kualitas",
+        },
+      },
+    },
+  };
+
+  const t = content[language];
+
+  const [activeFilter, setActiveFilter] = useState("");
+  const [activeSubfilter, setActiveSubfilter] = useState("");
+
+  const filters = [
+    { key: "video", label: t.filters.video, icon: "ri-video-line" },
+    { key: "sound", label: t.filters.sound, icon: "ri-mic-line" },
+    { key: "recommended", label: t.filters.recommended, icon: "ri-check-line" },
   ];
 
-  const filteredGear = category === 'All' ? gear : gear.filter(item => item.type === category);
+  const subfilters = {
+    video: ["CC", "Quality"],
+    sound: [],
+    recommended: [],
+  };
+
+  const handleFilterClick = (key) => {
+    setActiveSubfilter("");
+    setActiveFilter((prev) => (prev === key ? "" : key));
+  };
+
+  const handleSubfilterClick = (sub) => {
+    setActiveSubfilter((prev) => (prev === sub ? "" : sub));
+  };
+
+  const products = [
+    {
+      id: 1,
+      name: "Bundle (My Best CC + Topaz Setting)",
+      brand: "CC",
+      description: "Upgrade your videos with my top CC and Topaz settings for a quality look.",
+      image: bestCC,
+      link: "https://lynk.id/baeminguri/wjz8jxwy8k7z",
+      category: "video",
+      subcategory: "cc",
+      recommended: true,
+    },
+    {
+      id: 2,
+      name: "My Favorite CC",
+      brand: "CC",
+      description: "Perfect CC for a natural, polished look in every video.",
+      image: favCC,
+      link: "https://lynk.id/baeminguri/kwm00w8k6me3",
+      category: "video",
+      subcategory: "cc",
+      recommended: false,
+    },
+  ];
+
+  const filteredProducts = products.filter((product) => {
+    if (!activeFilter) return true;
+    if (activeFilter === "recommended") return product.recommended;
+    if (activeSubfilter) {
+      return (
+        product.category === activeFilter &&
+        product.subcategory?.toLowerCase() === activeSubfilter.toLowerCase()
+      );
+    }
+    return product.category === activeFilter;
+  });
 
   return (
-    <div className="max-w-3xl mx-auto px-4">
+    <div className="max-w-4xl mx-auto px-4">
       <Navbar />
-      <div className="text-center mt-10">
-        <img src="/your-photo.jpg" alt="Profile" className="rounded-full w-32 mx-auto" />
-        <h1 className="text-3xl font-bold mt-4">Your Name</h1>
-        <p className="text-gray-500 mb-4">A list of gear I use for creating content.</p>
+      <div className="py-6">
+        <h1 className="text-2xl sm:text-3xl font-bold mb-4">{t.title}</h1>
+        <p className="text-base sm:text-lg mb-6">{t.description}</p>
+        <hr />
 
-        <div className="flex justify-center gap-2 mb-6">
-          {['All', 'Video', 'Audio', 'Computer'].map(cat => (
+        {/* Filter Buttons */}
+        <div className="flex flex-wrap gap-2 mt-7 mb-6">
+          {filters.map((filter) => (
             <button
-              key={cat}
-              onClick={() => setCategory(cat)}
-              className={`px-4 py-2 rounded-full ${category === cat ? 'bg-black text-white' : 'bg-gray-200'}`}
+              key={filter.key}
+              onClick={() => handleFilterClick(filter.key)}
+              className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium flex items-center gap-2 border transition ${
+                activeFilter === filter.key
+                  ? "bg-gray-800 text-white"
+                  : "bg-gray-100 text-black hover:bg-gray-200"
+              }`}
             >
-              {cat}
+              <i className={`${filter.icon} text-lg`}></i>
+              {filter.label}
             </button>
           ))}
         </div>
 
-        <ul className="text-left">
-          {filteredGear.map((item, index) => (
-            <li key={index} className="mb-2">• {item.name}</li>
+        {/* Subfilters */}
+        {activeFilter && subfilters[activeFilter]?.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-6">
+            {subfilters[activeFilter].map((sub) => (
+              <button
+                key={sub}
+                onClick={() => handleSubfilterClick(sub)}
+                className={`px-4 py-1 border rounded-lg text-sm font-semibold transition ${
+                  activeSubfilter === sub
+                    ? "bg-gray-800 text-white"
+                    : "bg-white text-black hover:bg-gray-100"
+                }`}
+              >
+                {t.filters.subfilters[sub]}
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* Clear Filter */}
+        {activeFilter && (
+          <button
+            onClick={() => {
+              setActiveFilter("");
+              setActiveSubfilter("");
+            }}
+            className="text-sm text-red-600 font-medium mb-4"
+          >
+            {t.clearFilters}
+          </button>
+        )}
+
+        {/* Product Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
+          {filteredProducts.map((product) => (
+            <div
+              key={product.id}
+              className="rounded-xl border border-gray-200 bg-white flex flex-col overflow-hidden"
+            >
+              <div className="relative bg-white flex justify-center items-center h-60">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="object-contain max-h-full"
+                />
+                {product.recommended && (
+                  <span className="absolute top-4 left-4 bg-green-100 text-green-700 text-xs font-semibold px-2 py-0.5 rounded-md">
+                    {t.recommended}
+                  </span>
+                )}
+              </div>
+              <div className="bg-gray-50 p-4 flex flex-col justify-between flex-1">
+                <p className="text-sm text-gray-500">{product.brand}</p>
+                <h3 className="font-bold text-md text-gray-900 mt-1 mb-1">
+                  {product.name}
+                </h3>
+                <p className="text-sm text-gray-600 mb-4">
+                  {product.description}
+                </p>
+                <a
+                  href={product.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 border border-blue-600 text-blue-600 font-medium text-sm py-2 px-4 rounded-lg hover:bg-blue-50 transition"
+                >
+                  <i className="ri-shopping-cart-line"></i>
+                  {t.buyNow}
+                </a>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
+
+      <hr />
       <Footer />
+      <ScrollToTop />
     </div>
   );
-}
+};
+
+export default Gear;

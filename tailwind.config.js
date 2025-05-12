@@ -7,9 +7,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Verdana', 'sans-serif'],
+        sans: ['"Segoe UI"', 'sans-serif'],
       },
     },
   },
   plugins: [],
-}
+};

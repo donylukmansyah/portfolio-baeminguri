@@ -30,7 +30,7 @@ const ScrollToTop = () => {
     showButton && (
       <button
         onClick={scrollToTop}
-        className="fixed bottom-6 right-6 bg-gray-500 text-white p-3 rounded-full text-xl hover:bg-gray-600 transition-colors duration-300 z-50"
+        className="fixed bottom-6 right-6 bg-gray-800 text-white p-3 rounded-full text-xl hover:bg-gray-600 transition-colors duration-300 z-50"
         aria-label="Scroll to top"
       >
         <RiArrowUpSLine />

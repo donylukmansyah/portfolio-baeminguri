@@ -2,7 +2,7 @@ import React from "react";
 import { useLanguage } from "../context/LanguageContext";
 import Navbar from "../components/Navbar";
 import donyProfile from "../assets/dony.jpg";
-import YouTubeEmbed from "../components/YouTubeEmbed"; // Pastikan import sudah benar
+import YouTubeEmbed from "../components/YouTubeEmbed"; 
 import Footer from "../components/Footer"; 
 import ScrollToTop from "../components/ScrollToTop";
 
@@ -13,14 +13,14 @@ const Home = () => {
     en: {
       name: "Dony Lukmansyah",
       description:
-        "20 year old video editor 🎬 based in Bekasi 🇮🇩 editing and creating visual stories under the name Dony Lukmansyah.",
+        "20 year old video editor 🎬 based in Bekasi 🇮🇩 editing and creating visual stories with passion and purpose.",
       contact: "Interested in working together? Email me!",
       latest: "Latest video",
     },
     id: {
       name: "Dony Lukmansyah",
       description:
-        "Editor video berusia 20 tahun 🎬 yang berbasis di Bekasi 🇮🇩, mengedit dan membuat cerita visual dengan nama Dony Lukmansyah.",
+        "Editor video berusia 20 tahun 🎬 berbasis di Bekasi 🇮🇩, mengedit dan menciptakan cerita visual dengan semangat dan tujuan.",
       contact: "Tertarik untuk bekerja sama? Kirim email!",
       latest: "Video terbaru",
     },
@@ -49,7 +49,7 @@ const Home = () => {
         </div>
       </div>
       <hr />
-      <h2 className="text-2xl sm:text-2xl font-bold mt-7 mb-4">{t.latest}</h2>
+      <h2 className="text-2xl sm:text-3xl font-bold mt-7 mb-4">{t.latest}</h2>
       <div className="space-y-6 mb-10">
         <YouTubeEmbed embedId="54a-L5TQp3A" />
         <YouTubeEmbed embedId="G_4T3UYWwI0" />
