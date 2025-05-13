@@ -13,7 +13,7 @@ const Gear = () => {
     en: {
       title: "Gear",
       description:
-        "Everything I use to edit my videos, including presets, CC, and quality settings. Personal favorites are marked, with affiliate links if you want to grab them too.",
+        "All the gear I use to edit my videos including presets, CC, quality settings, transitions, and sound effects. Personal favorites are marked, with affiliate links if you want to grab them too.",
       clearFilters: "✖ Clear all filters",
       buyNow: "Buy now",
       recommended: "Recommended",
@@ -30,7 +30,7 @@ const Gear = () => {
     id: {
       title: "Peralatan",
       description:
-        "Semua yang saya gunakan untuk mengedit video saya, termasuk preset, CC, dan pengaturan kualitas. Favorit pribadi ditandai, dengan tautan afiliasi jika Anda ingin mendapatkannya juga.",
+        "Semua peralatan yang saya gunakan untuk mengedit video saya termasuk preset, CC, pengaturan kualitas, transisi, dan efek suara. Favorit pribadi ditandai, dengan tautan afiliasi jika Anda ingin mendapatkannya juga.",
       clearFilters: "✖ Hapus semua filter",
       buyNow: "Beli sekarang",
       recommended: "Rekomendasi",
