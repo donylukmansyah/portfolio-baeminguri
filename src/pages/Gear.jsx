@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import ScrollToTop from "../components/ScrollToTop";
 import bestCC from "../assets/img/best-cc.jpg";
 import favCC from "../assets/img/fav-cc.jpg";
+import sfxBunddle from "../assets/img/bundle-sfx.jpg";
 
 const Gear = () => {
   const { language } = useLanguage();
@@ -95,6 +96,17 @@ const Gear = () => {
       subcategory: "cc",
       recommended: false,
     },
+    {
+      id: 3,
+      name: "550+ Sound Effects Bundle",
+      brand: "SFX",
+      description: "High-quality sounds to boost your edits. From cinematic hits to ambient vibes all in one bundle!",
+      image: sfxBunddle,
+      link: "https://lynk.id/baeminguri/pdm5ye4ozpk4",
+      category: "sound",
+      subcategory: "sfx",
+      recommended: true,
+    },
   ];
 
   const filteredProducts = products.filter((product) => {
@@ -113,7 +125,7 @@ const Gear = () => {
     <div className="max-w-4xl mx-auto px-4">
       <Navbar />
       <div className="py-6">
-        <h1 className="text-2xl sm:text-3xl font-bold mb-4">{t.title}</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold mb-4">{t.title}</h1>
         <p className="text-base sm:text-lg mb-6">{t.description}</p>
         <hr />
 
