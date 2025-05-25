@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import ScrollToTop from "../components/ScrollToTop";
 import bestCC from "../assets/img/best-cc.jpg";
 import favCC from "../assets/img/fav-cc.jpg";
+import favAllPack from "../assets/img/cc-bundlepack.jpg";
 import sfxBunddle from "../assets/img/bundle-sfx.jpg";
 
 const Gear = () => {
@@ -14,34 +15,38 @@ const Gear = () => {
     en: {
       title: "Gear",
       description:
-        "All the gear I use to edit my videos including presets, CC, quality settings, transitions, and sound effects. Personal favorites are marked, with affiliate links if you want to grab them too.",
+        "All the gear I use to edit my videos including presets, CC, quality settings, transitions, project file, and sound effects. Personal favorites are marked, Get them too if you want the same setup.",
       clearFilters: "✖ Clear all filters",
       buyNow: "Buy now",
       recommended: "Recommended",
       filters: {
         video: "Video",
         sound: "Sound Effect",
+        project: "Project File",
         recommended: "Recommended",
         subfilters: {
           CC: "CC",
           Quality: "Quality",
+          Transition: "Transition",
         },
       },
     },
     id: {
       title: "Peralatan",
       description:
-        "Semua peralatan yang saya gunakan untuk mengedit video saya termasuk preset, CC, pengaturan kualitas, transisi, dan efek suara. Favorit pribadi ditandai, dengan tautan afiliasi jika Anda ingin mendapatkannya juga.",
+        "Semua peralatan yang saya gunakan untuk mengedit video saya termasuk preset, CC, pengaturan kualitas, transisi, file proyek, dan efek suara. Favorit pribadi ditandai, Dapatkan juga jika Anda menginginkan pengaturan yang sama.",
       clearFilters: "✖ Hapus semua filter",
       buyNow: "Beli sekarang",
       recommended: "Rekomendasi",
       filters: {
         video: "Video",
         sound: "Efek Suara",
+        project: "File Proyek", 
         recommended: "Rekomendasi",
         subfilters: {
           CC: "CC",
           Quality: "Kualitas",
+          Transition: "Transisi",
         },
       },
     },
@@ -55,12 +60,14 @@ const Gear = () => {
   const filters = [
     { key: "video", label: t.filters.video, icon: "ri-video-line" },
     { key: "sound", label: t.filters.sound, icon: "ri-mic-line" },
+    { key: "project", label: t.filters.project, icon: "ri-file-2-line" },
     { key: "recommended", label: t.filters.recommended, icon: "ri-check-line" },
   ];
 
   const subfilters = {
-    video: ["CC", "Quality"],
+    video: ["CC", "Quality", "Transition"],
     sound: [],
+    project: [], 
     recommended: [],
   };
 
@@ -76,17 +83,28 @@ const Gear = () => {
   const products = [
     {
       id: 1,
-      name: "Bundle (My Best CC + Topaz Setting)",
+      name: "Bundle (My All CC + Topaz Setting)",
       brand: "CC",
-      description: "Upgrade your videos with my top CC and Topaz settings for a quality look.",
-      image: bestCC,
-      link: "https://lynk.id/baeminguri/wjz8jxwy8k7z",
+      description: "Level up your edits with all my CCs and Topaz settings one powerful bundle.",
+      image: favAllPack,
+      link: "https://lynk.id/baeminguri/4ed83ljkkw2m",
       category: "video",
       subcategory: "cc",
       recommended: true,
     },
     {
       id: 2,
+      name: "My Best CC",
+      brand: "CC",
+      description: "Upgrade your videos with my top CC and Topaz settings for a quality look.",
+      image: bestCC,
+      link: "https://lynk.id/baeminguri/wjz8jxwy8k7z",
+      category: "video",
+      subcategory: "cc",
+      recommended: false,
+    },
+    {
+      id: 3,
       name: "My Favorite CC",
       brand: "CC",
       description: "Perfect CC for a natural, polished look in every video.",
@@ -97,7 +115,7 @@ const Gear = () => {
       recommended: false,
     },
     {
-      id: 3,
+      id: 4,
       name: "550+ Sound Effects Bundle",
       brand: "SFX",
       description: "High-quality sounds to boost your edits. From cinematic hits to ambient vibes all in one bundle!",
