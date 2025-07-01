@@ -2,25 +2,42 @@ import React from "react";
 import { useLanguage } from "../context/LanguageContext";
 import Navbar from "../components/Navbar";
 import donyProfile from "../assets/dony.jpg";
-import YouTubeEmbed from "../components/YouTubeEmbed"; 
-import Footer from "../components/Footer"; 
+import YouTubeEmbed from "../components/YouTubeEmbed";
+import Footer from "../components/Footer";
 import ScrollToTop from "../components/ScrollToTop";
 
 const Home = () => {
   const { language } = useLanguage();
 
+  const calculateAge = () => {
+    const birthDate = new Date("2004-12-21");
+    const today = new Date();
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+
+    const hasBirthdayPassedThisYear =
+      today.getMonth() > 11 ||
+      (today.getMonth() === 11 && today.getDate() >= 21);
+
+    if (!hasBirthdayPassedThisYear) {
+      age -= 1;
+    }
+
+    return age;
+  };
+
+  const age = calculateAge();
+
   const content = {
     en: {
       name: "Dony Lukmansyah",
-      description:
-        "20 year old video editor 🎬 based in Bekasi 🇮🇩 editing and creating visual stories with passion and purpose.",
+      description: `${age} year old video editor 🎬 based in Indonesia 🇮🇩 editing and creating visual stories with passion and purpose.`,
       contact: "Interested in working together? Email me!",
       latest: "Latest video",
     },
     id: {
       name: "Dony Lukmansyah",
-      description:
-        "Editor video berusia 20 tahun 🎬 berbasis di Bekasi 🇮🇩, mengedit dan menciptakan cerita visual dengan semangat dan tujuan.",
+      description: `Editor video berusia ${age} tahun 🎬 berbasis di Indonesia 🇮🇩, mengedit dan menciptakan cerita visual dengan semangat dan tujuan.`,
       contact: "Tertarik untuk bekerja sama? Kirim email!",
       latest: "Video terbaru",
     },

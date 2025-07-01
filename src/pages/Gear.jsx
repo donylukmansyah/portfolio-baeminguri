@@ -15,7 +15,7 @@ const Gear = () => {
     en: {
       title: "Gear",
       description:
-        "All the gear I use to edit my videos including presets, CC, quality settings, transitions, project file, and sound effects. Personal favorites are marked, Get them too if you want the same setup.",
+        "All the gear I use to edit my videos including presets, CC, quality settings, transitions, project file, AE Script, and sound effects. Personal favorites are marked, Get them too if you want the same setup.",
       clearFilters: "✖ Clear all filters",
       buyNow: "Buy now",
       recommended: "Recommended",
@@ -23,6 +23,7 @@ const Gear = () => {
         video: "Video",
         sound: "Sound Effect",
         project: "Project File",
+        script: "AE Script",
         recommended: "Recommended",
         subfilters: {
           CC: "CC",
@@ -34,14 +35,15 @@ const Gear = () => {
     id: {
       title: "Peralatan",
       description:
-        "Semua peralatan yang saya gunakan untuk mengedit video saya termasuk preset, CC, pengaturan kualitas, transisi, file proyek, dan efek suara. Favorit pribadi ditandai, Dapatkan juga jika Anda menginginkan pengaturan yang sama.",
+        "Semua peralatan yang saya gunakan untuk mengedit video saya termasuk preset, CC, pengaturan kualitas, transisi, file proyek, Script AE, dan efek suara. Favorit pribadi ditandai, Dapatkan juga jika Anda menginginkan pengaturan yang sama.",
       clearFilters: "✖ Hapus semua filter",
       buyNow: "Beli sekarang",
       recommended: "Rekomendasi",
       filters: {
         video: "Video",
         sound: "Efek Suara",
-        project: "File Proyek", 
+        project: "File Proyek",
+        script: "Script AE",
         recommended: "Rekomendasi",
         subfilters: {
           CC: "CC",
@@ -61,13 +63,15 @@ const Gear = () => {
     { key: "video", label: t.filters.video, icon: "ri-video-line" },
     { key: "sound", label: t.filters.sound, icon: "ri-mic-line" },
     { key: "project", label: t.filters.project, icon: "ri-file-2-line" },
+    { key: "script", label: t.filters.script, icon: "ri-javascript-line" },
     { key: "recommended", label: t.filters.recommended, icon: "ri-check-line" },
   ];
 
   const subfilters = {
     video: ["CC", "Quality", "Transition"],
     sound: [],
-    project: [], 
+    project: [],
+    script: [],
     recommended: [],
   };
 
@@ -87,7 +91,7 @@ const Gear = () => {
       brand: "CC",
       description: "Level up your edits with all my CCs and Topaz settings one powerful bundle.",
       image: favAllPack,
-      link: "https://lynk.id/baeminguri/4ed83ljkkw2m",
+      link: "https://payhip.com/b/6xBqD",
       category: "video",
       subcategory: "cc",
       recommended: true,
@@ -98,7 +102,7 @@ const Gear = () => {
       brand: "CC",
       description: "Upgrade your videos with my top CC and Topaz settings for a quality look.",
       image: bestCC,
-      link: "https://lynk.id/baeminguri/wjz8jxwy8k7z",
+      link: "https://payhip.com/b/0RVwn",
       category: "video",
       subcategory: "cc",
       recommended: false,
@@ -109,7 +113,7 @@ const Gear = () => {
       brand: "CC",
       description: "Perfect CC for a natural, polished look in every video.",
       image: favCC,
-      link: "https://lynk.id/baeminguri/kwm00w8k6me3",
+      link: "https://payhip.com/b/cQBqK",
       category: "video",
       subcategory: "cc",
       recommended: false,
